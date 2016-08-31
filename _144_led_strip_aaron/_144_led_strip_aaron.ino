@@ -234,8 +234,8 @@ void switchColor(int first, int second) {
 void twelveColor() {
    for (int repeat = 0; repeat < 21; repeat++) {
     for (int i = 0; i < COLOR_LENGTH; i++) {
-      for (int j = i; j < COLOR_LENGTH + i; j++) {
-        setPixelSet(color[j % COLOR_LENGTH], COLOR_LENGTH, (j % COLOR_LENGTH) - 1);  // Red
+      for (int j = 0; j < COLOR_LENGTH; j++) {
+        setPixelSet(color[(j + i) % 12], COLOR_LENGTH, (j + i) % 12);
       }
       delay(TWELVE_COLOR_SPEED);
       strip.show();
@@ -297,7 +297,7 @@ void rainbowCycle(uint8_t wait) {
 
 // Fill the dots progressively along the strip.
 void colorWipe(uint32_t c, uint8_t wait) {
-  for (int i=0; i < PIXEL_COUNT; i++) {
+  for (int i = 0; i < PIXEL_COUNT; i++) {
       strip.setPixelColor(i, c);
       strip.show();
       delay(wait);
